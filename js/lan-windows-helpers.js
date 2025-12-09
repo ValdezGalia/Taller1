@@ -62,4 +62,4 @@
     window.taskbarRight = taskbarRight;
     window.toastContainer = toastContainer;
     window.showToast = showToast;
-})();
+})(); 
