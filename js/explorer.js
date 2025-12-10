@@ -64,17 +64,25 @@
     }
   };
 
-  const loadURL = (tabLi, raw) => {
-    if(!raw) return;
-    let url = raw;
-    if(!raw.endsWith('.html')) url += '.html';
-    pageFrame.src = url;
-    emptyState.style.display = 'none';
-    logOutput.textContent = `Cargando: ${url}`;
-    tabLi.dataset.url = url;
-    tabLi.textContent = url.split('/').pop();
-    activeTab.input.value = url;
-  };
+const isAbsoluteUrl = (u) => /^https?:\/\//i.test(u);
+
+const loadURL = (tabLi, raw) => {
+  if (!raw) return;
+  let url = raw.trim();
+
+  if (!isAbsoluteUrl(url) && !url.endsWith('.html')) {
+    url += '.html';
+  }
+
+  pageFrame.src = url;
+  emptyState.style.display = 'none';
+  logOutput.textContent = `Cargando: ${url}`;
+  tabLi.dataset.url = url;
+  tabLi.textContent = url.split('/').pop();
+  activeTab.input.value = url;
+};
+
+
 
   newTabButton.addEventListener('click', () => createTab());
 
