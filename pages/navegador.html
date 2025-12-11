@@ -5,18 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Un browser (navegador) simple">
     <meta name="author" content="Orlando Valdez / Jenry Youssef / Oscar Torres">
-    <link rel="stylesheet" type="text/css" media="screen" href="/style/styleWeb.css" />    
+    <link rel="stylesheet" type="text/css" media="screen" href="/style/navegador.css" />    
     <title>Navegador</title>
 </head>
 <body>
 
     <hr>
 
-<main role="region" aria-label="Contenido de la página web solicitada">
-  <section id="tabs-bar" class="tabs-bar" aria-label="Pestañas">
+    <!-- <button id="new-tab-button" type="button" title="Nueva pestaña">+</button> 
+    <ul id="tabs-list" class="tabs-list" role="tablist"></ul> -->
+
+  <div class="tabs-wrapper">
+    <ul id="tabs-list" class="tabs-list"></ul>
     <button id="new-tab-button" type="button" title="Nueva pestaña">+</button>
-    <ul id="tabs-list" class="tabs-list" role="tablist"></ul>
-  </section>
+  </div>  
+
+
+<main role="region" aria-label="Contenido de la página web solicitada">
 
   <section id="browser-viewport" class="viewport-display" role="tabpanel">
     <!-- Aquí se insertará la barra de búsqueda de cada pestaña -->
@@ -24,7 +29,7 @@
 
     <iframe id="page-frame" title="Vista de página" sandbox="allow-same-origin allow-scripts allow-forms" referrerpolicy="no-referrer"></iframe>
     <p id="empty-state">Introduce una URL desde la pestaña y haz clic en 'Ir' para comenzar la simulación.</p>
-  </section>
+  </section> 
 
   <aside id="network-log" aria-label="Registro de actividad de red">
     <h3>Registro de Proceso (DNS, HTTP)</h3>
