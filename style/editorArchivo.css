@@ -175,3 +175,27 @@ footer {
     font-size: 0.8rem;
     color: #666;
 }
+#status-message[data-variant="warning"] { color: #e67e22; }
+#status-message[data-variant="error"] { color: #c0392b; }
+#status-message[data-variant="info"] { color: #666; }
+
+/* Toast liviano para avisos de guardado/cierre */
+#editor-toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 12px 16px;
+    background: #333;
+    color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+    z-index: 9999;
+    font-size: 0.9rem;
+}
+
+.editor-toast--info { background: #2b7a78; }
+.editor-toast--warning { background: #e9a73f; }
+.editor-toast--error { background: #c0392b; }

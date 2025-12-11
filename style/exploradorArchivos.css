@@ -82,6 +82,65 @@ header h1 {
     transform: translateY(1px);
 }
 
+/* Open project & reload buttons */
+.open-project-btn, .reload-btn {
+    border: none;
+    background: #e95420;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+.open-project-btn:hover, .reload-btn:hover { background: #d3430f; }
+
+/* Preview area in the right panel */
+#preview-area {
+    margin-top: 18px;
+    border-top: 1px dashed #eee;
+    padding-top: 12px;
+}
+#preview-area h3 { margin: 0 0 8px 0; font-size: 1rem; }
+#preview-content {
+    background: #fafafa;
+    border: 1px solid #eee;
+    padding: 12px;
+    border-radius: 8px;
+    min-height: 120px;
+    max-height: 60vh; /* permitir desplazamiento vertical si el contenido es grande */
+    overflow: auto;
+}
+#preview-content img { max-width: 100%; height: auto; display: block; max-height: 60vh; }
+#preview-content pre { white-space: pre-wrap; word-break: break-word; font-family: monospace; font-size: 0.9rem; margin: 0; }
+
+/* Toast para el explorador (esquina superior derecha) */
+#explorer-toast {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    padding: 10px 14px;
+    background: rgba(43,122,120,0.95);
+    color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    opacity: 0;
+    transition: opacity .22s ease;
+    z-index: 9999;
+    pointer-events: none;
+}
+#explorer-toast.show { opacity: 1; pointer-events: auto; }
+#explorer-toast.warning { background: #e9a73f; color:#111; }
+#explorer-toast.error { background: #c0392b; }
+
+/* Modal preview styles */
+#preview-modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; z-index: 10000; }
+#preview-modal[aria-hidden="false"] { display: flex; }
+#preview-modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.5); }
+#preview-modal-content { position: relative; background: #fff; width: 90%; max-width: 1100px; max-height: 90vh; border-radius: 8px; box-shadow: 0 12px 40px rgba(0,0,0,0.3); overflow: auto; padding: 18px; }
+#preview-modal-close { position: absolute; top: 10px; right: 10px; border: none; background: transparent; font-size: 1.1rem; cursor: pointer; }
+#preview-modal-body { white-space: pre-wrap; word-break: break-word; font-family: monospace; font-size: 0.95rem; color: #111; }
+#preview-modal-body img { max-width: 100%; height: auto; display: block; }
+
 /* Layout: left sidebar + main content */
 main {
     display: flex;
@@ -178,8 +237,9 @@ main nav summary:hover {
     margin: 0;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
     gap: 12px;
 }
 
@@ -192,8 +252,28 @@ main nav summary:hover {
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    width: 100vw;
+    width: auto;
+    min-width: 140px;
+    max-width: 320px;
     transition: .12s ease-out;
+}
+
+/* Restaurar dimensiones originales para la lista superior de detalles
+   (Nombre / Tipo / Tamaño): que ocupen el espacio disponible en la
+   columna derecha y mantengan proporciones iguales. */
+.panel-derecho > ul {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    justify-content: space-between;
+    align-items: stretch;
+}
+.panel-derecho > ul > li {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: none;
+    width: auto;
+    align-items: center;
 }
 
 .panel-derecho ul li:hover {
