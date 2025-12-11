@@ -8,7 +8,7 @@ archivo.addEventListener('change', (e) => {
     const etiqueta = e.target;
     const archivos = etiqueta.files;
     const nombre = archivos[0].name;
-    const rutaFinal = "/drivers/etc/hosts/" + nombre;   
+    const rutaf = "/drivers/etc/hosts/" + nombre;   
     ruta.value = rutaf;
 }); 
 
