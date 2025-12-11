@@ -229,6 +229,7 @@ footer {
     cursor: pointer;
     padding: 2px 5px;
     transition: background-color 0.12s ease, color 0.12s ease;
+    border-radius: 2px;
 }
 
 .window-controls button:hover {

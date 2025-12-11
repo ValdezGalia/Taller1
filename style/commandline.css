@@ -21,12 +21,45 @@ body{
     box-sizing: border-box;
 }
 
+/* Scrollbar personalizado para #terminal-window */
+#terminal-window {
+    /* Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.14) rgba(0,0,0,0.12);
+}
+
+/* WebKit (Chrome, Edge, Safari) */
+#terminal-window::-webkit-scrollbar {
+    width: 12px;
+}
+#terminal-window::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.12);
+    border-radius: 8px;
+}
+#terminal-window::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(255,255,255,0.13), rgba(255,255,255,0.06));
+    border-radius: 8px;
+    border: 3px solid transparent; /* space around the thumb */
+    background-clip: padding-box;
+}
+#terminal-window::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, rgba(255,255,255,0.22), rgba(255,255,255,0.12));
+}
+#terminal-window::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+/* Small accessibility tweak: increase contrast when focused */
+#terminal-window:focus::-webkit-scrollbar-thumb {
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.03) inset;
+}
+
 #terminal-output {
     margin: 0;
     white-space: pre-wrap; 
     word-wrap: break-word;
-    height: calc(100% - 25px); 
-    overflow: hidden;        
+    display: block;
+    overflow: visible;
 }
 
 #command-line {
@@ -51,4 +84,27 @@ body{
     font-size: inherit;
     caret-color: #FFFFFF;     
     padding: 0;               
+}
+
+/* Tab hint next to the input */
+#tab-hint {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8px;
+    background: rgba(255,255,255,0.04);
+    color: #DDD;
+    border: 1px solid rgba(255,255,255,0.04);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+#tab-hint .kbd {
+    display: inline-block;
+    background: rgba(0,0,0,0.25);
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: 6px;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.02) inset;
 }
