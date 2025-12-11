@@ -23,13 +23,13 @@
                 <legend>Controles del Archivo</legend>
                 <div id="file-path-controls">
                     <label for="file-path">Ruta del Archivo:</label>
-                    <input  type="text"  id="file-path"  placeholder="/drivers/etc/hosts" value="" aria-label="Campo para ingresar la ruta del archivo a editar">
+                    <input disabled style="cursor: no-drop;" type="text"  id="file-path"  placeholder="/drivers/etc/hosts" value="" aria-label="Campo para ingresar la ruta del archivo a editar">
                     <button type="button" id="open-button">Abrir</button>
                 </div>
 
                 <div id="file-upload-controls">
                     <label for="file-upload">Subir un archivo: </label>
-                    <input type="file" id="file-upload">
+                    <input type="file" id="file-upload" accept=".txt,.html,.css,.js,.json,.md,.csv,text/plain,text/html,text/css,application/javascript,application/json">
                 </div>
             </fieldset>
 
@@ -62,7 +62,7 @@
             </p>
         </footer>
 
-        <script src="../js/editorArchivo.js"></script>
+        <script src="/js/editorArchivo.js"></script>
     </main>
     
 </body>

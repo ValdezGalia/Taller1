@@ -16,8 +16,10 @@
     <header>
         <div class="address-bar">
             <span class="location-icon" aria-hidden="true">📁</span>
-            <input id="path-input" type="text" value="/" aria-label="Barra de direcciones" />
+            <input id="path-input" type="text" value="/" aria-label="Barra de direcciones" disabled style="cursor:not-allowed;" />
             <button id="copy-path" class="copy-btn" aria-label="Copiar ruta">📋</button>
+            <button id="open-project-button" class="open-project-btn" aria-label="Abrir carpeta del proyecto">Abrir proyecto</button>
+            <button id="reload-tree-button" class="reload-btn" aria-label="Recargar arbol">Recargar Árbol</button>
         </div>
     </header>
 
@@ -91,6 +93,24 @@
                 <li>Tipo</li>
                 <li>Tamaño</li>
             </ul>
+            <div id="preview-area">
+                <h3>Previsualización</h3>
+                <div id="preview-content">Selecciona un archivo para ver una previsualización.</div>
+                <div style="margin-top:10px; text-align:right;">
+                    <button id="view-full-button" class="open-project-btn">Ver completo</button>
+                </div>
+            </div>
+
+    <!-- Modal para ver previsualización completa -->
+    <div id="preview-modal" aria-hidden="true">
+        <div id="preview-modal-backdrop"></div>
+        <div id="preview-modal-content">
+            <div style="position:absolute; top:10px; right:10px; display:flex; gap:8px;">
+                <button id="preview-modal-close" aria-label="Cerrar">✕</button>
+            </div>
+            <div id="preview-modal-body"></div>
+        </div>
+    </div>
         </div>
 
     </main>
